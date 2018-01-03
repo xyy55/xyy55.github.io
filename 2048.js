@@ -381,31 +381,31 @@ $("#saveGame").click(
     }
 );
 //用ajax进行跨域访问获取天气数据显示
-$.ajax({
-    url: "http://query.yahooapis.com/v1/public/yql",
-    type: "GET",
-    dataType: 'JSONP',
-    jsonp: "callback",
-    jsonpCallback:"message",
-    data: {
-        q: "select * from json where url=\"http://aider.meizu.com/app/weather/listWeather?cityIds=101010100\"",
-        format: "json"
-    },
-    success: function(data){
-        var d = data.query.results.json;
-        var words = "北京今天";
-        var weather = d.value.weatherDetailsInfo.weather3HoursDetailsInfos[0];
-        var pm25 = d.value.pm25;
-        if(d.code=="200"){
-            words += weather.weather+"，未来三小时中，气温为"+weather.highestTemperature+"摄氏度";
-            words += "，pm2.5指数："+pm25.pm25+"，"+d.value.indexes[5].content;
-            words += d.value.indexes[3].content;
-            $(".weather marquee").text(words);
-        }else {
-            alert(d.message);
-        }
-    }
-});
+//$.ajax({
+//    url: "http://query.yahooapis.com/v1/public/yql",
+//    type: "GET",
+//    dataType: 'JSONP',
+//    jsonp: "callback",
+//   jsonpCallback:"message",
+//   data: {
+//        q: "select * from json where url=\"http://aider.meizu.com/app/weather/listWeather?cityIds=101010100\"",
+//        format: "json"
+//    },
+//    success: function(data){
+//        var d = data.query.results.json;
+//        var words = "北京今天";
+//        var weather = d.value.weatherDetailsInfo.weather3HoursDetailsInfos[0];
+//        var pm25 = d.value.pm25;
+//        if(d.code=="200"){
+//            words += weather.weather+"，未来三小时中，气温为"+weather.highestTemperature+"摄氏度";
+//            words += "，pm2.5指数："+pm25.pm25+"，"+d.value.indexes[5].content;
+//            words += d.value.indexes[3].content;
+//            $(".weather marquee").text(words);
+//        }else {
+//            alert(d.message);
+//        }
+//   }
+//});
 //鼠标覆盖时边框动画
 $(".end").hover(function(){
     n1 = $(this).width();
